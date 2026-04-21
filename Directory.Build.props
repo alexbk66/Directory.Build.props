@@ -9,6 +9,9 @@
       <!-- MSBuildProjectName = project file name, stable per project (MSBuild property) -->
     <OutputPath>$(HsBuildRoot)\$(MSBuildProjectName)\bin\$(Platform)\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>$(HsBuildRoot)\$(MSBuildProjectName)\obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+    <BaseOutputPath>$(HsBuildRoot)\$(MSBuildProjectName)\bin\</BaseOutputPath>
+	<BaseIntermediateOutputPath>$(HsBuildRoot)\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
+
   </PropertyGroup>
   <PropertyGroup>
     <Copyright>Copyright ©ABK 2020-2026</Copyright>

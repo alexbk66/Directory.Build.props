@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <HsBuildRoot Condition="'$(HsBuildRoot)' == '' and '$(HS_BUILD_ROOT)' != ''">$(HS_BUILD_ROOT)</HsBuildRoot>
+    <HsBuildRoot Condition="'$(HsBuildRoot)' == ''">C:\my\temp\HS_Build</HsBuildRoot>
+    <HomeSeerDir>$(MSBuildProgramFiles32)\HomeSeer HS4</HomeSeerDir>
+  </PropertyGroup>
+  <PropertyGroup>
+      <!-- AssemblyName can be changed and can collide across projects (MSBuild property semantics) -->
+      <!-- MSBuildProjectName = project file name, stable per project (MSBuild property) -->
+    <OutputPath>$(HsBuildRoot)\$(MSBuildProjectName)\bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>$(HsBuildRoot)\$(MSBuildProjectName)\obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Copyright>Copyright ©ABK 2020-2026</Copyright>
+  </PropertyGroup>
+</Project>

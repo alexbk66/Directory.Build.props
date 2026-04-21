@@ -1,0 +1,7 @@
+# ignore everything
+*
+
+# but keep these
+!.gitignore
+!Directory.Build.props
+!Directory.Build.targets

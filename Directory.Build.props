@@ -4,6 +4,19 @@
     <HsBuildRoot Condition="'$(HsBuildRoot)' == ''">C:\my\temp\HS_Build</HsBuildRoot>
     <HomeSeerDir>$(MSBuildProgramFiles32)\HomeSeer HS4</HomeSeerDir>
   </PropertyGroup>
+
+  <PropertyGroup>
+	<HS4Dir>$(MSBuildThisFileDirectory)</HS4Dir>
+	<HSPluginLibDir>$(HS4Dir)PluginLib\</HSPluginLibDir>
+
+	<!-- Plugin solutions may use Debug_Konnected, Debug_Whatever, etc. -->
+	<!-- Shared libraries are exported as Debug or Release only. -->
+	<PluginLibConfiguration Condition="'$(Configuration)' == 'Release'">Release</PluginLibConfiguration>
+	<PluginLibConfiguration Condition="'$(PluginLibConfiguration)' == ''">Debug</PluginLibConfiguration>
+
+	<LocatorOutDir>$(HSPluginLibDir)Locator\out\$(Platform)\$(PluginLibConfiguration)\</LocatorOutDir>
+  </PropertyGroup>
+	
   <PropertyGroup>
       <!-- AssemblyName can be changed and can collide across projects (MSBuild property semantics) -->
       <!-- MSBuildProjectName = project file name, stable per project (MSBuild property) -->
@@ -11,8 +24,8 @@
     <IntermediateOutputPath>$(HsBuildRoot)\$(MSBuildProjectName)\obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
     <BaseOutputPath>$(HsBuildRoot)\$(MSBuildProjectName)\bin\</BaseOutputPath>
 	<BaseIntermediateOutputPath>$(HsBuildRoot)\$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
-
   </PropertyGroup>
+	
   <PropertyGroup>
     <Copyright>Copyright ©ABK 2020-2026</Copyright>
   </PropertyGroup>

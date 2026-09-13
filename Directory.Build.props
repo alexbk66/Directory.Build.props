@@ -29,4 +29,21 @@
   <PropertyGroup>
     <Copyright>Copyright ©ABK 2020-2026</Copyright>
   </PropertyGroup>
+
+	<!-- Remove stale plugin dependencies before the project's PostBuildEvent repopulates the folder. -->
+	<Target Name="CleanPluginDependencyFolder"
+			BeforeTargets="PostBuildEvent"
+			Condition="$([System.String]::Copy('$(TargetName)').StartsWith('HSPI_'))">
+
+		<PropertyGroup>
+			<PluginDependencyDir>$(TargetDir)bin\$([System.String]::Copy('$(TargetName)').Replace('HSPI_',''))\</PluginDependencyDir>
+		</PropertyGroup>
+
+		<Message Text="Cleaning plugin dependency folder: $(PluginDependencyDir)"
+				 Importance="High" />
+
+		<RemoveDir Directories="$(PluginDependencyDir)"
+				   Condition="Exists('$(PluginDependencyDir)')" />
+	</Target>
+	
 </Project>
